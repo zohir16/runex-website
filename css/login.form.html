@@ -1,0 +1,22 @@
+<!--loging form-->
+<main class="auth-page">
+  <div class="auth__container">
+    <h1>Login or Sign Up</h1>
+    <!-- Sign In Form -->
+    <form class="auth__form" id="singin">
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Passwoord" required />
+      <button type="submit" class="btn btn--primary">Sing In</button>
+      <p>Don't have an account? <a href="#signup">Sign Up</a></p>
+    </form>
+    <!-- Sign Up Form -->
+    <form class="auth__form hidden" id="singup">
+      <input type="text" placeholder="FullName" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Passwoord" required />
+      <button type="submit" class="btn btn--secondery">Sing Up</button>
+      <p>Already have an account? <a href="#signin">Sign In</a></p>
+    </form>
+  </div>
+  <script src="js/login.js"></script>
+</main>
