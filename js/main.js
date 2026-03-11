@@ -9,7 +9,7 @@
             this.classList.toggle("collapsible--expanded");
           })
         );
-
+      }
         /* ============================
    Hamburger Menu Toggle
 ============================ */
@@ -110,25 +110,30 @@
         /* ============================
    Hero Slider
 ============================ */
-        const slides = document.querySelectorAll(".hero__slide");
-        const nextBtn = document.querySelector(".hero__next");
+const slides = document.querySelectorAll(".hero__slide");
+const nextBtn = document.querySelector(".hero__next");
 
-        let currentIndex = 0;
+let currentIndex = 0;
 
-        function showSlide(index) {
-          slides.forEach((slide) => slide.classList.remove("active"));
-          slides[index].classList.add("active");
-        }
+function showSlide(index) {
+  if (!slides.length) return;
 
-        if (nextBtn && slides.length > 0) {
-          nextBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-          });
-        }
-        // Auto-slide every 5 seconds (5000ms)
-        setInterval(() => {
-          currentIndex = (currentIndex + 1) % slides.length;
-          showSlide(currentIndex);
-        }, 5000);
-      });
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+if (slides.length > 0) {
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }, 5000);
+
+}
+
+if (nextBtn && slides.length > 0) {
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+}
