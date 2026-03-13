@@ -73,30 +73,36 @@
         /* ============================
    Mega Menu Toggle (Mobile)
 ============================ */
-        const megaToggles = document.querySelectorAll(
-          ".nav__item--has-mega > .nav__link"
-        );
+const megaToggles = document.querySelectorAll(
+  ".nav__item--has-mega > .nav__link"
+);
 
-        megaToggles.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const megaMenu = this.nextElementSibling;
-            megaMenu.classList.toggle("active");
+megaToggles.forEach((toggle) => {
+  toggle.addEventListener("click", function (e) {
+    e.preventDefault();
 
-            document.querySelectorAll(".mega-menu").forEach((menu) => {
-              if (menu !== megaMenu) menu.classList.remove("active");
-            });
-          });
-        });
+    const megaMenu = this.nextElementSibling;
 
-        document.addEventListener("click", function (e) {
-          if (!e.target.closest(".nav__item--has-mega")) {
-            document.querySelectorAll(".mega-menu").forEach((menu) => {
-              menu.classList.remove("active");
-            });
-          }
-        });
+    // Prevent crash if mega menu does not exist
+    if (!megaMenu) return;
 
+    megaMenu.classList.toggle("active");
+
+    document.querySelectorAll(".mega-menu").forEach((menu) => {
+      if (menu !== megaMenu) {
+        menu.classList.remove("active");
+      }
+    });
+  });
+});
+
+document.addEventListener("click", function (e) {
+  if (!e.target.closest(".nav__item--has-mega")) {
+    document.querySelectorAll(".mega-menu").forEach((menu) => {
+      menu.classList.remove("active");
+    });
+  }
+});
         /* ============================
    AOS Init
 ============================ */
