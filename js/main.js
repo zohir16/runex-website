@@ -9,7 +9,7 @@
             this.classList.toggle("collapsible--expanded");
           })
         );
-      }
+      });
         /* ============================
    Hamburger Menu Toggle
 ============================ */
